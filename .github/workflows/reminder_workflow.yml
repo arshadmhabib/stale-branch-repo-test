@@ -2,7 +2,7 @@ name: Stale Branch Reminder
 
 on:
   schedule:
-    - cron: "0 0 * * *"  # Runs every day at midnight
+    - cron: "25 5 * * *"  # Runs every day at midnight
 
 jobs:
   reminder:
