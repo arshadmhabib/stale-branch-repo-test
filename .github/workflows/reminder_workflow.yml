@@ -1,0 +1,26 @@
+name: Stale Branch Reminder
+
+on:
+  schedule:
+    - cron: "0 0 * * *"  # Runs every day at midnight
+
+jobs:
+  reminder:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Install Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.x
+
+      - name: Install PyGithub
+        run: |
+          pip install PyGithub
+
+      - name: Run Reminder Script
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python reminder_script.py
